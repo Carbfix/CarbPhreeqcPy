@@ -7,7 +7,7 @@ CarbPhreeqcPy
 .. _SCK-CEN: http://www.sckcen.be
 .. _python: https://www.python.org/
 
-`CarbPhreecPy <https://github.com/CarbFix/CarbPhreeqcPy>`_ provides an updated version of the abandoned `IPhreeqcPy`_ (see below), updating the version of PHREEQC as well as adding the `carbfix.dat thermodynamic database <https://github.com/CarbFix/carbfix.dat>`_ to the package.
+`CarbPhreeqcPy <https://github.com/CarbFix/CarbPhreeqcPy>`_ provides an updated version of the abandoned `IPhreeqcPy`_ (see below), updating the version of PHREEQC as well as adding the `carbfix.dat thermodynamic database <https://github.com/CarbFix/carbfix.dat>`_ to the package.
 
 `IPhreeqcPy`_  provides a wrapper to communicate with `IPhreeqc`_ in `python`_. 
 It is an alternative to `PhreeqPy`_ and is derived from `PhreeqPy`_. 
