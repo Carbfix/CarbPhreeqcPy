@@ -1,8 +1,8 @@
 #>=============================================================================
-#>IphreeqcPy a python wrapper for Iphreeqc
+#>CarbPhreeqcPy a python wrapper for Iphreeqc based on IPhreeqcPy
 #>----------------------------------------------------------------------------- 
-#>
-#>Copyright (C) 2016  Ravi Patel
+#>Copyright (c) 2023  Martin Voigt
+#>IPhreeqcPy Copyright (C) 2016  Ravi Patel
 #
 #>This program is free software: you can redistribute it and/or modify
 #>it under the terms of the GNU Lesser General Public License as
@@ -19,7 +19,7 @@ import ctypes
 import os
 import sys
 import platform
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 
 if sys.version_info[0] == 2:
     def bytes(str_, encoding):
