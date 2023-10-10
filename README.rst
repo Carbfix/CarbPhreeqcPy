@@ -25,7 +25,7 @@ Developer
 ++++++++++
 Martin Voigt
 
-Original IPhreeqcPy: Ravi A. Patel
+Original `IPhreeqcPy`_: Ravi A. Patel
 
 
 License and Terms of use
