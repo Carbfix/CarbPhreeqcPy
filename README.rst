@@ -1,4 +1,4 @@
-IPhreeqcPy
+CarbPhreeqcPy
 ========== 
 .. _PhreeqPy: http://www.phreeqpy.com/
 .. _IPhreeqc: http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/
@@ -6,6 +6,8 @@ IPhreeqcPy
 .. _bitbucket: https://bitbucket.org/raviapatel/iphreeqcpy
 .. _SCK-CEN: http://www.sckcen.be
 .. _python: https://www.python.org/
+
+`CarbPhreecPy <https://github.com/CarbFix/CarbPhreeqcPy>`_ provides an updated version of the abandoned `IPhreeqcPy`_ (see below), updating the version of PHREEQC as well as adding the `carbfix.dat thermodynamic database <https://github.com/CarbFix/carbfix.dat>`_ to the package.
 
 `IPhreeqcPy`_  provides a wrapper to communicate with `IPhreeqc`_ in `python`_. 
 It is an alternative to `PhreeqPy`_ and is derived from `PhreeqPy`_. 
@@ -21,53 +23,15 @@ can be of use while restarting simulations.
 
 Developer
 ++++++++++
+Martin Voigt
 
-Ravi A. Patel
+Original IPhreeqcPy: Ravi A. Patel
 
-
-Contact me
-++++++++++
-
-email (personal): ravee.a.patel@gmail.com
-
-
-Citation
-++++++++
-
-If you are using `IPhreeqcPy`_ for academic work please cite this manual 
-and `IPhreeqcPy`_ repository  in your publications. Below is the bibtex format
-for citing `IPhreeqcPy`_
-
-::
-
-   @manual{Patel2016, 
-   title  = "IPhreeqcPy a python wrapper for IPhreeqc",
-   author = "Ravi Patel", 
-   url    = "http://raviapatel.bitbucket.io/IPhreeqcPy",
-   year   = "2016 (accessed Sept 21, 2016)"  
-   }
- 
-
-Hosted at
-+++++++++
-
-Source code is hosted on `bitbucket`_ and can be downloaded from
-`here <https://bitbucket.org/raviapatel/iphreeqcpy/get/v1.0.0.tar.gz>`_.
-
-Installation
-++++++++++++
-
-For detailed instructions on installation visit 
-`<http://raviapatel.bitbucket.org/IPhreeqcPy/install.html>`_
-
-Detailed Documentation
-+++++++++++++++++++++++
-For documentation visit  `<http://raviapatel.bitbucket.org/IPhreeqcPy/>`_
 
 License and Terms of use
 ++++++++++++++++++++++++
 
-`IPhreeqcPy`_ is a free software: you can redistribute it and/or modify it 
+`CarbPhreecPy <https://github.com/CarbFix/CarbPhreeqcPy>`_ is a free software: you can redistribute it and/or modify it 
 under the terms of the GNU Lesser General Public License as published by the
 Free Software Foundation, version 3 of the License. This program is distributed
 in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
