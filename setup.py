@@ -75,10 +75,10 @@ def windows_compile():
     zipfile.ZipFile(f+'.zip').extractall()
     os.chdir(f)    
     if platform.architecture()[0]=='64bit':
-        subprocess.call('cmake -G "Visual Studio 15 2017 Win64" "..\%s"'%f, shell=True)
+        subprocess.call('cmake -G "Visual Studio 15 2017 Win64" -D BUILD_SHARED_LIBS=ON "..\%s"'%f, shell=True)
         subprocess.call('cmake --build . --config Release', shell=True)
     if platform.architecture()[0]=='32bit':
-        subprocess.call('cmake -G "Visual Studio 10 2017" "..\%s"'%f, shell=True)
+        subprocess.call('cmake -G "Visual Studio 10 2017" -D BUILD_SHARED_LIBS=ON "..\%s"'%f, shell=True)
         subprocess.call('cmake --build . --config Release', shell=True)    
     shutil.copy(join(os.getcwd(),'Release','IPhreeqc.dll'),join('..','..'))
     os.chdir(join('..','..'))
