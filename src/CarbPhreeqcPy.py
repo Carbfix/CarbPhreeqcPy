@@ -176,7 +176,7 @@ class IPhreeqc():
     
     def RunAccumulated(self):
         """
-        Run the input buffer as defined by calls to :func:`~IphreeqcPy.IPhreeqc.AccumulateLine`
+        Run the input buffer as defined by calls to :func:`~CarbPhreeqcPy.IPhreeqc.AccumulateLine`
         """
         errors = self._RunAccumulated(self.id)
         if errors != 0:
@@ -217,7 +217,7 @@ class IPhreeqc():
     def ClearAccumulatedLines(self):
         """
         Clear the accumlated input buffer. Input buffer is accumlated from
-        calls to :func:`~IphreeqcPy.IPhreeqc.AccumulateLine`
+        calls to :func:`~CarbPhreeqcPy.IPhreeqc.AccumulateLine`
         """
         errors = self._ClearAccumulatedLines(self.id)
         if errors != 0:
@@ -283,9 +283,9 @@ class IPhreeqc():
 
     def GetErrorString(self):
         """
-        Retrieves the error messages from the last call to :func:`~IphreeqcPy.IPhreeqc.RunAccumulated`, 
-        :func:`~IphreeqcPy.IPhreeqc.RunFile`, :func:`~IphreeqcPy.IPhreeqc.RunString`, :func:`~IphreeqcPy.IPhreeqc.LoadDatabase`,
-        :func:`~IphreeqcPy.IPhreeqc.LoadDatabaseString`
+        Retrieves the error messages from the last call to :func:`~CarbPhreeqcPy.IPhreeqc.RunAccumulated`, 
+        :func:`~CarbPhreeqcPy.IPhreeqc.RunFile`, :func:`~CarbPhreeqcPy.IPhreeqc.RunString`, :func:`~CarbPhreeqcPy.IPhreeqc.LoadDatabase`,
+        :func:`~CarbPhreeqcPy.IPhreeqc.LoadDatabaseString`
         
         Returns
         -------
@@ -411,22 +411,9 @@ class IPhreeqc():
         ----------
         
         database_name: string
-            path to the database. IphreeqcPy comes with all databases of 
-            phreeqc and cemdata07.To use one of these database type the relevant
-            filename. Filenames are listed below
- 
-            * alkaline.dat
-            * cemdata07.dat
-            * ex15.dat
-            * llnl.dat
-            * mcatexch.dat
-            * minteq.dat
-            * minteq.V4.dat
-            * phreeqc.dat
-            * phreeqcU.dat
-            * phreeqd.dat
-            * pitzer.dat
-            * wateq4f.dat
+            path to the database. CarbPhreeqcPy comes with all databases of 
+            phreeqc.To use one of these database type the relevant
+            filename.
         """
         fpath = os.path.join(os.path.dirname(__file__),'databases',database_name)
         if os.path.isfile(fpath): 
