@@ -1,4 +1,4 @@
-#  $Id: minteq.v4.dat 85 2005-02-02 16:13:00Z dlpark $
+#  $Id: minteq.v4.dat 11091 2016-04-21 15:20:05Z dlpark $
 SOLUTION_MASTER_SPECIES
 Alkalinity	CO3-2		2.0     HCO3    61.0173
 E		e-		0	0	0
@@ -276,7 +276,7 @@ Phthalate-2 = Phthalate-2
 SOLUTION_SPECIES
 Fe+3 + e- = Fe+2
 	log_k	13.032
-	delta_h	-42.7	kcal
+	delta_h	-42.7	kJ
 	-gamma	0	0
 		#                  Id:	2802810
 		#        log K source:	Bard85                        
@@ -284,7 +284,7 @@ Fe+3 + e- = Fe+2
 		#T and ionic strength:	          
 H3AsO4 + 2e- + 2H+ = H3AsO3 + H2O
 	log_k	18.898
-	delta_h	-125.6	kcal
+	delta_h	-125.6	kJ
 	-gamma	0	0
 		#                  Id:	600610
 		#        log K source:	Bard85                        
@@ -292,7 +292,7 @@ H3AsO4 + 2e- + 2H+ = H3AsO3 + H2O
 		#T and ionic strength:	          
 Sb(OH)6- + 2e- + 3H+ = Sb(OH)3 + 3H2O
 	log_k	24.31
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	7407410
 		#        log K source:	Bard85                        
@@ -300,7 +300,7 @@ Sb(OH)6- + 2e- + 3H+ = Sb(OH)3 + 3H2O
 		#T and ionic strength:	          
 UO2+2 + 3e- + 4H+ = U+3 + 2H2O
 	log_k	0.42
-	delta_h	-42	kcal
+	delta_h	-42	kJ
 	-gamma	0	0
 		#                  Id:	8908930
 		#        log K source:	MTQ3.11                       
@@ -308,7 +308,7 @@ UO2+2 + 3e- + 4H+ = U+3 + 2H2O
 		#T and ionic strength:	          
 UO2+2 + 2e- + 4H+ = U+4 + 2H2O
 	log_k	9.216
-	delta_h	-144.1	kcal
+	delta_h	-144.1	kJ
 	-gamma	0	0
 		#                  Id:	8918930
 		#        log K source:	MTQ3.11                       
@@ -316,7 +316,7 @@ UO2+2 + 2e- + 4H+ = U+4 + 2H2O
 		#T and ionic strength:	          
 UO2+2 + e- = UO2+
 	log_k	2.785
-	delta_h	-13.8	kcal
+	delta_h	-13.8	kJ
 	-gamma	0	0
 		#                  Id:	8928930
 		#        log K source:	MTQ3.11                       
@@ -324,7 +324,7 @@ UO2+2 + e- = UO2+
 		#T and ionic strength:	          
 e- + Mn+3 = Mn+2
 	log_k	25.35
-	delta_h	-107.8	kcal
+	delta_h	-107.8	kJ
 	-gamma	0	0
 		#                  Id:	4704710
 		#        log K source:	Bard85                        
@@ -332,7 +332,7 @@ e- + Mn+3 = Mn+2
 		#T and ionic strength:	          
 Co+3 + e- = Co+2
 	log_k	32.4
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	2002010
 		#        log K source:	Bard85                        
@@ -340,7 +340,7 @@ Co+3 + e- = Co+2
 		#T and ionic strength:	          
 Cu+2 + e- = Cu+
 	log_k	2.69
-	delta_h	6.9	kcal
+	delta_h	6.9	kJ
 	-gamma	0	0
 		#                  Id:	2302310
 		#        log K source:	Bard85                        
@@ -348,7 +348,7 @@ Cu+2 + e- = Cu+
 		#T and ionic strength:	          
 V+3 + e- = V+2
 	log_k	-4.31
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	9009010
 		#        log K source:	Bard85                        
@@ -356,7 +356,7 @@ V+3 + e- = V+2
 		#T and ionic strength:	          
 VO+2 + e- + 2H+ = V+3 + H2O
 	log_k	5.696
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	9019020
 		#        log K source:	Bard85                        
@@ -364,7 +364,7 @@ VO+2 + e- + 2H+ = V+3 + H2O
 		#T and ionic strength:	          
 VO2+ + e- + 2H+ = VO+2 + H2O
 	log_k	16.903
-	delta_h	-122.7	kcal
+	delta_h	-122.7	kJ
 	-gamma	0	0
 		#                  Id:	9029030
 		#        log K source:	Bard85                        
@@ -372,7 +372,7 @@ VO2+ + e- + 2H+ = VO+2 + H2O
 		#T and ionic strength:	          
 SO4-2 + 9H+ + 8e- = HS- + 4H2O
 	log_k	33.66
-	delta_h	-60.14	kcal
+	delta_h	-60.14	kJ
 	-gamma	0	0
 		#                  Id:	7307320
 		#        log K source:	MTQ3.11                       
@@ -380,7 +380,7 @@ SO4-2 + 9H+ + 8e- = HS- + 4H2O
 		#T and ionic strength:	          
 Sn(OH)6-2 + 2e- + 4H+ = Sn(OH)2 + 4H2O
 	log_k	19.2
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	7907910
 		#        log K source:	Bard85                        
@@ -388,7 +388,7 @@ Sn(OH)6-2 + 2e- + 4H+ = Sn(OH)2 + 4H2O
 		#T and ionic strength:	          
 Tl(OH)3 + 2e- + 3H+ = Tl+ + 3H2O
 	log_k	45.55
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	8708710
 		#        log K source:	Bard85                        
@@ -396,7 +396,7 @@ Tl(OH)3 + 2e- + 3H+ = Tl+ + 3H2O
 		#T and ionic strength:	          
 HSeO3- + 6e- + 6H+ = HSe- + 3H2O
 	log_k	44.86
-	delta_h	0	kcal
+	delta_h	0	kJ
 	-gamma	0	0
 		#                  Id:	7607610
 		#        log K source:	Bard85                        
@@ -404,7 +404,7 @@ HSeO3- + 6e- + 6H+ = HSe- + 3H2O
 		#T and ionic strength:	          
 SeO4-2 + 2e- + 3H+ = HSeO3- + H2O
 	log_k	36.308
-	delta_h	-201.2	kcal
+	delta_h	-201.2	kJ
 	-gamma	0	0
 		#                  Id:	7617620
 		#        log K source:	Bard85                        
@@ -412,7 +412,7 @@ SeO4-2 + 2e- + 3H+ = HSeO3- + H2O
 		#T and ionic strength:	          
 0.5Hg2+2 + e- = Hg
 	log_k	6.5667
-	delta_h	-45.735	kcal
+	delta_h	-45.735	kJ
 	-gamma	0	0
 		#                  Id:	3600000
 		#        log K source:	NIST2.1.1                     
@@ -421,7 +421,7 @@ SeO4-2 + 2e- + 3H+ = HSeO3- + H2O
 
 2Hg(OH)2 + 4H+ + 2e- = Hg2+2 + 4H2O
 	log_k	43.185
-	delta_h	-63.59	kcal
+	delta_h	-63.59	kJ
 	-gamma	0	0
 		#                  Id:	3603610
 		#        log K source:	Bard85                        
@@ -429,7 +429,7 @@ SeO4-2 + 2e- + 3H+ = HSeO3- + H2O
 		#T and ionic strength:	          
 Cr(OH)2+ + 2H+ + e- = Cr+2 + 2H2O
 	log_k	2.947
-	delta_h	6.36	kcal
+	delta_h	6.36	kJ
 	-gamma	0	0
 		#                  Id:	2102110
 		#        log K source:	MTQ3.11                       
@@ -437,7 +437,7 @@ Cr(OH)2+ + 2H+ + e- = Cr+2 + 2H2O
 		#T and ionic strength:	          
 CrO4-2 + 6H+ + 3e- = Cr(OH)2+ + 2H2O
 	log_k	67.376
-	delta_h	-103	kcal
+	delta_h	-103	kJ
 	-gamma	0	0
 		#                  Id:	2112120
 		#        log K source:	MTQ3.11                       
@@ -465,7 +465,7 @@ NO3- + 10 H+ + 8 e- = NH4+ + 3 H2O
 
 Mn+2 + 4H2O = MnO4- + 8H+ + 5e-
 	log_k	-127.794
-	delta_h	822.67	kcal
+	delta_h	822.67	kJ
 	-gamma	3	0
 		#                  Id:	4700020
 		#        log K source:	NIST2.1.1                     
@@ -473,7 +473,7 @@ Mn+2 + 4H2O = MnO4- + 8H+ + 5e-
 		#T and ionic strength:	          
 Mn+2 + 4H2O = MnO4-2 + 8H+ + 4e-
 	log_k	-118.422
-	delta_h	711.07	kcal
+	delta_h	711.07	kJ
 	-gamma	5	0
 		#                  Id:	4700021
 		#        log K source:	NIST2.1.1                     
@@ -3411,7 +3411,7 @@ Mn+2 + SeO4-2 = MnSeO4
 		#T and ionic strength:	 0.00 25.0
 NH4+ = NH3 + H+
 	log_k	-9.244
-	delta_h	-52	kJ
+	delta_h	52	kJ
 	-gamma	0	0
 		#                  Id:	3304900
 		#        log K source:	NIST46.3                      
@@ -11586,7 +11586,7 @@ CrI3
 	CrI3 + 2H2O = Cr(OH)2+ + 3I- + 2H+
 	log_k	20.4767
 	delta_h	-134.419	kJ
-Cerrusite
+Cerussite
 	PbCO3 = Pb+2 + CO3-2
 	log_k	-13.13
 	delta_h	24.79	kJ
@@ -11598,7 +11598,7 @@ Pb3O2CO3
 	Pb3O2CO3 + 4H+ = 3Pb+2 + CO3-2 + 2H2O
 	log_k	11.02
 	delta_h	-110.583	kJ
-Hydrocerrusite
+Hydrocerussite
 	Pb3(OH)2(CO3)2 + 2H+ = 3Pb+2 + 2H2O + 2CO3-2
 	log_k	-18.7705
 	delta_h	-0	kJ

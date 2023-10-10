@@ -1,9 +1,9 @@
 #!/usr/bin/python
 #>=============================================================================
-#>IphreeqcPy a python wrapper for Iphreeqc
+#>CarbPhreeqcPy a python wrapper for Iphreeqc based on IPhreeqcPy
 #>----------------------------------------------------------------------------- 
-#>
-#>Copyright (C) 2016  Ravi Patel
+#>Copyright (c) 2023  Martin Voigt
+#>IPhreeqcPy Copyright (C) 2016  Ravi Patel
 #
 #>This program is free software: you can redistribute it and/or modify
 #>it under the terms of the GNU Lesser General Public License as
@@ -11,7 +11,7 @@
 #>This program is distributed in the hope that it will be useful, 
 #>but WITHOUT ANY WARRANTY; without even the implied warranty of
 #>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#>GNU General Public License for more details.
+#>GNU Lesser General Public License for more details.
 #>You should have received a copy of the GNU Lesser General Public License
 #>along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #>=============================================================================
@@ -27,8 +27,8 @@ from os.path import join, isfile, splitext
 from numpy.distutils.core import setup
 from numpy.distutils.command.install import install
 sys.path.append('./src')
-import IPhreeqcPy
-v=IPhreeqcPy.__version__
+import CarbPhreeqcPy
+v=CarbPhreeqcPy.__version__
 class CompilePhrqc(install):
     def run(self):
         if platform.system() == 'Linux':
@@ -70,7 +70,7 @@ def list_extra_data(
     
 def windows_compile():
     #add line to unzip iphreeqc
-    f='iphreeqc-3.3.8-11728'
+    f='iphreeqc-3.7.3-15968'
     os.chdir('iphreeqc_src')    
     zipfile.ZipFile(f+'.zip').extractall()
     os.chdir(f)    
@@ -85,7 +85,7 @@ def windows_compile():
 
 def linux_compile():
     #add line to unzip iphreeqc
-    f='iphreeqc-3.3.8-11728'
+    f='iphreeqc-3.7.3-15968'
     os.chdir('iphreeqc_src')    
     tar = tarfile.open(f+'.tar.gz', "r:gz")
     tar.extractall()
@@ -110,17 +110,15 @@ def run_setup():
         data.append(join('IPhreeqc.dll'))
     setup(
         cmdclass={'install': CompilePhrqc},
-        name='IPhreeqcPy',
+        name='CarbPhreeqcPy',
         version=v,
-        author = 'Ravi A. Patel',
-        author_email = 'ravee.a.patel@gmail.com',
-        download_url = 'http://raviapatel.bitbucket.org/IPhreeqcPy' ,
-        url='https://bitbucket.org/raviapatel/iphreeqcpy/get/1.0.1.tar.gz',
+        author = 'Martin Voigt',
+        download_url = 'https://github.com/CarbFix/CarbPhreeqcPy' ,
         license='LGPL V3',
         description='Python wrapper for Iphreeqc',
         long_description=open('README.rst').read(),
         package_dir={'': 'src'},
-        py_modules = ['IPhreeqcPy'],
+        py_modules = ['CarbPhreeqcPy'],
         data_files=data,
         platforms=['Windows','Linux'],
 #        install_requires=['numpy'],
