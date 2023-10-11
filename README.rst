@@ -7,9 +7,9 @@ CarbPhreeqcPy
 .. _SCK-CEN: http://www.sckcen.be
 .. _python: https://www.python.org/
 
-`CarbPhreeqcPy <https://github.com/CarbFix/CarbPhreeqcPy>`_ provides an updated version of the abandoned `IPhreeqcPy`_ (see below), updating the version of PHREEQC as well as adding the `carbfix.dat thermodynamic database <https://github.com/CarbFix/carbfix.dat>`_ to the package.
+`CarbPhreeqcPy <https://github.com/CarbFix/CarbPhreeqcPy>`_ provides an updated version of the abandoned `IPhreeqcPy`_ package (see below), including more recent `PHREEQC/IPhreeqc <http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/>`_ versions as well as adding the `carbfix.dat thermodynamic database <https://github.com/CarbFix/carbfix.dat>`_ to the package.
 
-`IPhreeqcPy`_  provides a wrapper to communicate with `IPhreeqc`_ in `python`_. 
+The original `IPhreeqcPy`_  provides a wrapper to communicate with `IPhreeqc`_ in `python`_. 
 It is an alternative to `PhreeqPy`_ and is derived from `PhreeqPy`_. 
 One of the drawback of `PhreeqPy`_ was that it used pythonic names spaces for
 `IPhreeqc`_  function calls which made `PhreeqPy`_ function calls different
@@ -25,7 +25,7 @@ Developer
 ++++++++++
 Martin Voigt
 
-Original `IPhreeqcPy`_: Ravi A. Patel
+`IPhreeqcPy`_: Ravi A. Patel
 
 
 License and Terms of use
@@ -39,7 +39,3 @@ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for more details. You should have 
 received a copy of the GNU Lesser General Public License along with this program.
 If not, see `<http://www.gnu.org/licenses/>`_.
-
-
- 
-
