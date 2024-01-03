@@ -543,43 +543,19 @@ def test():
     """
     """
     x=IPhreeqc()
-    x.LoadDatabase('cemdata07.dat')
-    x.SetDumpStringOn()   
-    x.AccumulateLine(
-    """
-    solution 0-1
-    -pH 7 charge
-    -water 1.0  
-    Equilibrium phases 1
-    portlandite 0 1
-    save solution 1
-    save Equilibrium phases 1
-    save solution 0
-    selected_output
-    -file abstracted_model.xls
-    -totals Ca Si
-    -temp true
-    -high_precision true
-    -equilibrium_phases  portlandite
-    Dump
-    -all
-    end
-    """    
-    )
-    x.RunAccumulated()
+    x.LoadDatabase('carbfix.dat')
     x.RunString(
     """
-    use solution 1
-    use Equilibrium phases 1
-    use solution 0
-    Advection
-    -cells 1
-    -shifts 10000
-    -punch_frequency 500    
+    SELECTED_OUTPUT
+        -reset false
+        -pH true
+        -totals Cl
+    SOLUTION 1
+    REACTION 1
+        HCl 0.01
     """    
     )
     print( x.GetSelectedOutputArray())
-    print( x.GetDumpString())
     return
 
 if __name__ == '__main__':
