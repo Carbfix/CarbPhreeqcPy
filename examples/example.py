@@ -17,6 +17,7 @@ p.RunString(
     SELECTED_OUTPUT # Define which parameters are returned with "GetSelectedOutputArray"
       -reset false
       -pH true
+      -saturation_indices Calcite
       -high_precision true
     """
     )
