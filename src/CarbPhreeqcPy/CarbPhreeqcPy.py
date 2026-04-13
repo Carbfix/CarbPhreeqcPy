@@ -46,18 +46,10 @@ class IPhreeqc():
     files are used.         
     """
     def __init__(self, dll_path=None):
-        if not dll_path:
-            system= platform.system()
-            if system == 'Windows':
-                dll_name = 'IPhreeqc.dll'
-            elif system == 'Linux':
-                dll_name = 'libiphreeqc.so'
-
-            else:
-                msg = 'Platform %s is not supported.' % sys.platform
-                raise NotImplementedError(msg)
-            dll_path = os.path.join(os.path.dirname(__file__), dll_name)
-        phreeqc = ctypes.cdll.LoadLibrary(dll_path)
+        if dll_path:
+            phreeqc = ctypes.cdll.LoadLibrary(dll_path)
+        else:
+            phreeqc = self._load_default_library()
         c_int = ctypes.c_int
         #map iphreeqc methods
         method_mapping = [('_AccumulateLine', phreeqc.AccumulateLine,
@@ -124,6 +116,41 @@ class IPhreeqc():
         self.phc_warning_count = 0
         self.phc_database_error_count = 0
         self.id = self.CreateIPhreeqc()
+
+    @staticmethod
+    def _load_default_library():
+        system = platform.system()
+        package_dir = os.path.dirname(__file__)
+        libs_dir = os.path.join(package_dir, 'libs')
+        if system == 'Windows':
+            candidates = [
+                os.path.join(libs_dir, 'IPhreeqc.dll'),
+                os.path.join(package_dir, 'IPhreeqc.dll'),
+            ]
+        elif system == 'Linux':
+            candidates = [
+                os.path.join(libs_dir, 'libIPhreeqc.so.3.6.3'),
+                os.path.join(libs_dir, 'libiphreeqc.so'),
+                os.path.join(package_dir, 'libIPhreeqc.so.3.6.3'),
+                os.path.join(package_dir, 'libiphreeqc.so'),
+            ]
+        else:
+            msg = 'Platform %s is not supported.' % sys.platform
+            raise NotImplementedError(msg)
+
+        load_errors = []
+        for candidate in candidates:
+            if not os.path.isfile(candidate):
+                continue
+            try:
+                return ctypes.cdll.LoadLibrary(candidate)
+            except OSError as exc:
+                load_errors.append('%s (%s)' % (candidate, exc))
+
+        msg = 'Unable to load IPhreeqc shared library. Tried: %s' % ', '.join(candidates)
+        if load_errors:
+            msg = '%s. Load errors: %s' % (msg, '; '.join(load_errors))
+        raise OSError(msg)
 
     @staticmethod
     def _RaisePhreeqcError(error_code):
