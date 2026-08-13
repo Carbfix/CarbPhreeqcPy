@@ -1,0 +1,107 @@
+name: Release
+
+# Builds the wheels from source and publishes them as GitHub Release assets
+# whenever a version tag (v*) is pushed. This makes CI the only producer of
+# release artifacts: a wheel can only come from a tagged commit on main, so
+# consumers (Databricks jobs, the carbfix-data-platform libraries volume)
+# cannot drift from this repository.
+#
+# Cutting a release:
+#   1. Bump __version__ in src/CarbPhreeqcPy/CarbPhreeqcPy.py, merge to main.
+#   2. git tag v<version> <merge-commit> && git push origin v<version>
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure the tagged commit is on main
+        run: |
+          git fetch origin main
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error::Tag $GITHUB_REF_NAME does not point at a commit on main. Releases must be cut from main."
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ensure the tag matches __version__
+        run: |
+          version=$(python -c "ns = {}; exec(open('src/CarbPhreeqcPy/CarbPhreeqcPy.py', encoding='utf-8').read(), ns); print(ns['__version__'])")
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match __version__ = $version in src/CarbPhreeqcPy/CarbPhreeqcPy.py."
+            exit 1
+          fi
+
+      - name: Build wheels
+        # Nothing is compiled (pure Python + prebuilt ctypes-loaded libraries),
+        # so both platform wheels are built on this one runner via --plat-name.
+        run: |
+          python -m pip install build
+          python -m build --wheel --outdir wheelhouse -C--build-option=--plat-name=win_amd64
+          python -m build --wheel --outdir wheelhouse -C--build-option=--plat-name=manylinux_2_17_x86_64
+
+      - name: Verify wheel tags and payload
+        run: |
+          python - <<'EOF'
+          import glob, zipfile
+
+          wheels = sorted(glob.glob("wheelhouse/*.whl"))
+          assert len(wheels) == 2, f"expected 2 wheels, got {wheels}"
+          payloads = []
+          for whl in wheels:
+              z = zipfile.ZipFile(whl)
+              meta_name = next(n for n in z.namelist() if n.endswith(".dist-info/WHEEL"))
+              meta = z.read(meta_name).decode()
+              tags = [l.split(": ", 1)[1] for l in meta.splitlines() if l.startswith("Tag: ")]
+              # The two failure modes this repo has already been bitten by:
+              # a CPython ABI pin (cp312-cp312) and a platformless py3-none-any.
+              assert "Root-Is-Purelib: false" in meta, (whl, meta)
+              assert tags and all(t.startswith("py3-none-") for t in tags), (whl, tags)
+              assert not any(t.endswith("-any") for t in tags), (whl, tags)
+              payload = {i.filename: i.CRC for i in z.infolist() if ".dist-info/" not in i.filename}
+              libs = sorted(n for n in payload if "/libs/" in n)
+              dats = [n for n in payload if n.endswith(".dat")]
+              assert len(libs) == 2, (whl, libs)
+              assert dats, (whl, "no databases packaged")
+              payloads.append(payload)
+              print(whl, "|", tags, "|", len(payload), "payload files")
+          assert payloads[0] == payloads[1], "wheel payloads differ between platforms"
+          print("OK")
+          EOF
+
+      - name: Smoke test (install manylinux wheel, run a real PHREEQC calculation)
+        run: |
+          python -m venv smoke
+          smoke/bin/pip install --no-index wheelhouse/*manylinux*.whl
+          installed=$(smoke/bin/python -c "import CarbPhreeqcPy; print(CarbPhreeqcPy.__version__)")
+          if [ "v$installed" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Installed package reports version $installed, tag is $GITHUB_REF_NAME."
+            exit 1
+          fi
+          cd "$RUNNER_TEMP"
+          "$GITHUB_WORKSPACE/smoke/bin/python" "$GITHUB_WORKSPACE/examples/example.py"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" wheelhouse/*.whl \
+            --verify-tag \
+            --title "CarbPhreeqcPy $GITHUB_REF_NAME" \
+            --generate-notes
