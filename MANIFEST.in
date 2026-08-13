@@ -1,0 +1,3 @@
+recursive-include src/CarbPhreeqcPy/databases *.dat
+recursive-include src/CarbPhreeqcPy/libs *.so*
+recursive-include src/CarbPhreeqcPy/libs *.dll
